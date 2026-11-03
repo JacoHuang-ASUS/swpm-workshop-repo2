@@ -3,7 +3,7 @@
 本檔是本資料夾的專案層規則；使用者層的 CLAUDE.md 同樣適用，兩者衝突時採較嚴格者。
 
 ## 1. 這個資料夾是什麼
-- 技能分析工作站：在這裡啟動 Claude Code，用 skill-analyzer（教學版）分析其他資料夾（「目標」）裡的技能。
+- 技能分析工作站：在這裡啟動 Claude Code，用 skill-analyzer-lite（skill-analyzer 的教學版）分析其他資料夾（「目標」）裡的技能。
 - 預設分支：main。
 - 目標登錄在 targets.local.json（格式見 targets.example.json）。
 - 分析報告一律寫在本資料夾的 .analysis/<目標代號>/。
