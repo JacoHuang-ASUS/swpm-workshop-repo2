@@ -1,0 +1,6 @@
+.venv/
+.analysis/
+targets.local.json
+.plans/
+__pycache__/
+.pytest_cache/

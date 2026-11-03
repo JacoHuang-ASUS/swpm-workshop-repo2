@@ -1,0 +1,9 @@
+{
+  "targets": [
+    {
+      "id": "repo1",
+      "path": "<目標工作資料夾的絕對路徑>",
+      "skills_dir": ".claude/skills"
+    }
+  ]
+}
