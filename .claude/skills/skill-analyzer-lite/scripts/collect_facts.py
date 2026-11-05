@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""技能分析工作站：事實收集腳本。
+"""技能健檢資料夾：事實收集腳本。
 
 讀取「目標」資料夾裡某個 Claude Code 技能，輸出 JSON 事實到 stdout，
 交給 Agent 判讀並撰寫報告。
@@ -23,7 +23,7 @@ import subprocess
 import sys
 from pathlib import Path, PurePosixPath
 
-# 工作站根目錄：scripts → skill-analyzer-lite → skills → .claude → 根目錄
+# 健檢資料夾根目錄：scripts → skill-analyzer-lite → skills → .claude → 根目錄
 WORKSTATION_ROOT = Path(__file__).resolve().parents[4]
 DEFAULT_TARGETS_FILE = WORKSTATION_ROOT / "targets.local.json"
 DEFAULT_SKILLS_DIR = ".claude/skills"
@@ -162,7 +162,7 @@ def load_registry(registry_path):
         ):
             raise FactError(
                 "target_overlaps_workstation",
-                f"目標 {entry['id']} 與工作站互相包含，請改用工作站以外且不包含工作站的資料夾。",
+                f"目標 {entry['id']} 與健檢資料夾互相包含，請改用健檢資料夾以外且不包含健檢資料夾的資料夾。",
             )
         entry["root"] = resolved
     return entries
@@ -671,7 +671,7 @@ def build_parser():
     parser.add_argument("--skill", help="技能資料夾名稱")
     parser.add_argument(
         "--targets-file",
-        help="目標登錄檔路徑（預設：工作站根目錄的 targets.local.json）",
+        help="目標登錄檔路徑（預設：健檢資料夾根目錄的 targets.local.json）",
     )
     return parser
 

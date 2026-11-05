@@ -7,7 +7,7 @@ description: 分析指定目標 repo 裡某個 Claude Code 技能的文件與相
 
 分析「目標」repo 裡的單一技能。腳本負責收集事實並判定 8 項檢查中的 6 項，Agent 只判讀 T-1、T-7 兩項，再寫一頁報告。目標時間 1–3 分鐘。
 
-指令在工作站根目錄執行。以下為 Windows 寫法；macOS／Linux 把 `.venv\Scripts\python` 換成 `.venv/bin/python`。
+指令在健檢資料夾根目錄執行。以下為 Windows 寫法；macOS／Linux 把 `.venv\Scripts\python` 換成 `.venv/bin/python`。
 
 ## 限制（務必遵守）
 
@@ -15,7 +15,7 @@ description: 分析指定目標 repo 裡某個 Claude Code 技能的文件與相
 - 不讀目標的 `.venv`、`.git` 內容。
 - 不執行目標的任何腳本。
 - 對目標只透過 `collect_facts.py` 執行兩個唯讀 git 指令；Agent 自己不對目標執行 git。
-- 報告只寫在本工作站的 `.analysis/` 底下。
+- 報告只寫在本健檢資料夾的 `.analysis/` 底下。
 
 ## 流程
 
@@ -50,7 +50,7 @@ description: 分析指定目標 repo 裡某個 Claude Code 技能的文件與相
 
 ### 4. 寫報告
 
-依 `references/report-template.md` 寫成一頁報告，存到本工作站：
+依 `references/report-template.md` 寫成一頁報告，存到本健檢資料夾：
 
 ```
 .analysis/<目標代號>/<技能名稱>_<MMDD>.md
@@ -75,7 +75,7 @@ description: 分析指定目標 repo 裡某個 Claude Code 技能的文件與相
 | `targets_file_not_found` | 沒有 `targets.local.json` | 請使用者依 `targets.example.json` 建立 `targets.local.json`，建好後再重跑。 |
 | `targets_invalid` | JSON 格式錯、缺 id 或 path、id 重複 | 轉述 `message`，請使用者修正 `targets.local.json`。 |
 | `target_path_not_found` | 登錄的路徑不存在 | 請使用者確認該目標的 `path` 是否正確。 |
-| `target_overlaps_workstation` | 目標與工作站互相包含 | 說明目標不能在工作站內，也不能包含工作站，請使用者改登錄其他路徑。 |
+| `target_overlaps_workstation` | 目標與健檢資料夾互相包含 | 說明目標不能在健檢資料夾內，也不能包含健檢資料夾，請使用者改登錄其他路徑。 |
 | `target_not_found` | 目標代號不在登錄檔 | 跑 `targets` 列出可選目標，請使用者重選。 |
 | `skill_not_found` | 目標內找不到該技能 | 列出該目標的 `skills`（來自 `targets` 輸出），請使用者重選。 |
 | `no_frontmatter` | SKILL.md 沒有 frontmatter | 這本身就是重大問題（技能無法被觸發），向使用者說明；不寫報告，並建議先補上含 `name` 與 `description` 的 frontmatter 後再分析。 |
