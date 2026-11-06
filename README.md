@@ -30,9 +30,11 @@ Workshop 教學用的技能健檢資料夾。把你在其他資料夾做的練�
 1. 建立虛擬環境並安裝測試套件（在本資料夾執行）：
 
    ```
-   python -m venv .venv
+   py -m venv .venv
    .venv\Scripts\python -m pip install -r requirements.txt
    ```
+
+   （找不到 py 時再改用 python；在部分 Windows 電腦上 python 會開到 Microsoft Store，不是真的 Python。）
 
 2. 複製 `targets.example.json` 為 `targets.local.json`，把 `path` 改成你的目標工作資料夾的絕對路徑。目標不能放在本資料夾裡，也不能包含本資料夾。
 
